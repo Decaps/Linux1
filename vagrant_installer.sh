@@ -14,7 +14,7 @@ while [ "$launch" != "O" ]; do
         if [ "$vmbox_preinstall_response" == "O" ]; then
         clear
         echo Très bien, c\'est parfait. passons maintenant à la configuration de notre machine virtuelle.
-        echo Quelle VM veux tu utiliser?
+        echo Quelle VM veux-tu utiliser?
         echo 1: ubuntu/xenial64
         echo 2: ubuntu/xenial64
         echo 3: ubuntu/xenial64
@@ -26,9 +26,9 @@ while [ "$launch" != "O" ]; do
     else
         vm_base_final_response="ubuntu/xenial64"
     fi
-    echo Comment veux tu appeler le dossier synchronisé?
+    echo Comment veux-tu appeler le dossier synchronisé?
     read synced_folder_response
-    echo "quelle adresse IP souhaites-tu utiliser (seulement les 2 derniers chiffres)?"
+    echo "Quelle adresse IP souhaites-tu utiliser (seulement les 2 derniers chiffres)?"
     read ip_adress
     echo Valider ces 3 informations? "$vm_base_final_response", "$synced_folder_response" et "192.168.33.$ip_adress"? ?
     echo O / N
@@ -46,12 +46,12 @@ while [ "$launch" != "O" ]; do
         exit
     fi
      mv ./script2/vagrant_config.sh $synced_folder_response
+     rm -rf ./script2
     echo La machine virtuelle est prête à être lancée. Commencer? O / N
     read launch
     echo "Une fois connecté, veuillez rentrer les commandes suivantes 'cd /var/www/html' puis 'bash vagrant_config.sh'"
     sleep 5
     vagrant plugin install vagrant-list
-    vagrant.require_plugin "vagrant-list"
     vagrant up
     vagrant ssh
         elif [ "$vmbox_preinstall_response" == "N" ]; then
@@ -64,11 +64,12 @@ while [ "$launch" != "O" ]; do
             echo Désolé, votre choix n\'est pas valide. Veuillez répondre par O pour oui, ou N pour non.
         fi
     elif [ "$vagrant_preinstall_response" == "N" ]; then
-        echo Désolé, veuillez vous rendre à l\'adresse suivante pour le télécharger, puis relancer le script.
-            echo https://releases.hashicorp.com/vagrant/2.1.1/vagrant_2.1.1_x86_64.deb
-            sleep 1
-            break
+        echo Remedions à cela...
+        vagrant init
+        echo Tu peux relancer le script maintenant.
+        sleep 1
+        break
     else
-        echo Désolé, votre choix n\'est pas valide. Veuillez répondre par O pour oui, ou N pour non.
+       echo Désolé, votre choix n\'est pas valide. Veuillez répondre par O pour oui, ou N pour non.
     fi
 done

@@ -17,16 +17,33 @@ read action_choice
 
 if [ "$action_choice" == 1 ]; then
     clear
-    vagrant list
+    vagrant global-status
     echo -e "OK, et maintenant?
             1: Détruire le mond.. une VM. \n
-            2: Quitter ce monde en perdition."
+            2: Arrêter une VM. \n
+            3: Quitter ce monde en perdition."
             read vm_action_choice
             if [ "$vm_action_choice" == 1 ]; then
-                vagrant list
+                vagrant global-status
                 echo Laquelle souhaites-tu détruire?
-                echo Non je déconne, j\'ai pas encore eu le temps de le faire...
+                read vagrant_id
+                echo Veux-tu vraiment détruire la machine $vagrant_id ? O/ N
+                read vagrant_destroy_confirm
+                if [ "$vagrant_destroy_confirm" == O ]; then
+                    vagrant destroy $vagrant_id
+                    echo VM $vagrant_id détruite.
+                fi
             elif [ "$vm_action_choice" == 2 ]; then
+                vagrant global-status
+                echo Laquelle souhaites-tu arrêter?
+                read vagrant_halt_id
+                echo Veux-tu vraiment arrêter la machine $vagrant_id ? O/ N
+                read vagrant_halt_confirm
+                if [ "$vagrant_halt_confirm" == O ]; then
+                    vagrant halt $vagrant_id
+                    echo VM $vagrant_halt_id arrêtée.
+                fi
+            elif [ "$vm_action_choice" == 3 ]; then
                 echo Pas de soucis, mais je te  kick carrément, j\'ai pas fini ce script.
                 sleep 1
                 exit

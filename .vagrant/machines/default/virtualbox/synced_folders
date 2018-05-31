@@ -1,1 +1,0 @@
-{"virtualbox":{"/var/www/html":{"type":"virtualbox","guestpath":"/var/www/html","hostpath":"/home/apprenant/Bureau/tp_final/data","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/apprenant/Bureau/tp_final","disabled":false,"__vagrantfile":true}}}
