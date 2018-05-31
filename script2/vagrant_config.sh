@@ -12,7 +12,9 @@ echo -e "Que voulez-vous faire? \n
         1: Voir la liste des VM disponibles. \n
         2: Installer des paquets.\n
         3: Sortir d'ici"
+
 read action_choice
+
 if [ "$action_choice" == 1 ]; then
     clear
     vagrant list
@@ -31,7 +33,6 @@ if [ "$action_choice" == 1 ]; then
              else
                 echo Ton choix n\'est pas valide.
             fi
-   fi
 elif [ "$action_choice" == 2 ]; then
     echo Voici la liste des paquets installables : apache2 / php7.0 / mysql-server.
     echo 1: N\'en installer qu\'un.
@@ -52,11 +53,12 @@ elif [ "$action_choice" == 2 ]; then
                     echo Veux-tu installer un autre paquet?
                     read add_a_paquet
                     if [ "$add_a_paquet" == N ]; then
-                    echo Installation terminée, tu peux éteindre votre ordinateur et aller te coucher.
-                    exit
-                    else
-                    echo OK, continuons
-                    fi
+                        echo Installation terminée, tu peux éteindre votre ordinateur et aller te coucher.
+                        exit
+                        else
+                        echo OK, continuons.
+                        echo Mais pas aujourd\'hui, script non terminé.
+                        fi
                 elif [ "$packet_choose" == 2 ]; then
                     sudo apt-install -y php7.0
                     clear
@@ -65,10 +67,11 @@ elif [ "$action_choice" == 2 ]; then
                     echo Veux-tu installer un autre paquet?
                     read add_a_paquet
                     if [ "$add_a_paquet" == N ]; then
-                    echo Installation terminée, tu peux éteindre votre ordinateur et aller te coucher.
-                    exit
-                    else
-                    echo OK, continuons
+                        echo Installation terminée, tu peux éteindre votre ordinateur et aller te coucher.
+                        exit
+                        else
+                        echo OK, continuons.
+                        echo Mais pas aujourd\'hui, script non terminé.
                     fi
                 elif [ "$packet_choose" == 3 ]; then
                     sudo apt-install -y mysql-server
@@ -78,10 +81,11 @@ elif [ "$action_choice" == 2 ]; then
                     echo Veux-tu installer un autre paquet?
                     read add_a_paquet
                     if [ "$add_a_paquet" == N ]; then
-                    echo Installation terminée, tu peux éteindre votre ordinateur et aller te coucher.
-                    exit
-                    else
-                    echo OK, continuons
+                        echo Installation terminée, tu peux éteindre votre ordinateur et aller te coucher.
+                        exit
+                        else
+                        echo OK, continuons.
+                        echo Mais pas aujourd\'hui, script non terminé.
                     fi
                 else
                     echo Votre choix n\'est pas valide
@@ -92,7 +96,6 @@ elif [ "$action_choice" == 2 ]; then
             clear
             sleep 0.5
             echo Installation terminée, tu peux éteindre votre ordinateur et aller te coucher.
-
         else
             echo  Ton choix n\'est pas valide.
         fi
