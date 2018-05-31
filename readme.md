@@ -6,7 +6,7 @@ Ce qui fonctionne
 
 Les scripts fonctionnent dans leur majeure partie, à quelques détails prêts. Je n'ai pas eu le temps de terminer
 le code et de le peaufiner comme je l'aurai voulu, mais j'ai été retardé par une !*$)=:! d'erreur de syntaxe qui m'a 
-amputer de pas mal de temps.
+amputé de pas mal de temps.
 
 Ce qui ne fonctionne pas
 -
